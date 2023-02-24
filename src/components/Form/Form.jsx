@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getCurrencyData } from "../../services/criptoAPI";
-import { Error } from "../";
+import { Error, SelectCurrencies } from "../";
 import { InputSubmit } from "./styles";
 import { getCurrencyInputOptions } from "../../helpers/helpers";
-import SelectCurrencies from "../SelectCurrency/SelectCurrency";
 
 const Form = ({ onSelectCurrency }) => {
-  const [criptoCurrencies, setCriptoCurrencies] = useState([]);
   const [selectedValues, setSelectedValues] = useState({
     currency: "",
     criptoCurrency: "",
@@ -15,20 +13,10 @@ const Form = ({ onSelectCurrency }) => {
     getCurrencyInputOptions([])
   );
   const [error, setError] = useState(false);
-  //   const [currency, SelectCurrency] = useSelectCurrency(
-  //     "Elige tu Moneda",
-  //     currencies
-  //   );
-  //   const [criptoCurrency, SelectCriptoCurrency] = useSelectCurrency(
-  //     "Elige tu Criptomoneda",
-  //     criptoCurrencies
-  //   );
 
   useEffect(() => {
     getCriptos()
       .then((res) => {
-        setCriptoCurrencies(res);
-        console.log(res);
         setCurrencyOptions(getCurrencyInputOptions(res));
       })
       .catch((err) => console.log(err));
@@ -45,10 +33,10 @@ const Form = ({ onSelectCurrency }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+
     const { currency, criptoCurrency } = selectedValues;
     const hasSearchValues = ![currency, criptoCurrency].includes("");
-    console.log(hasSearchValues);
+
     if (!hasSearchValues) {
       setError(true);
       return;
