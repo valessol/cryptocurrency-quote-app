@@ -19,6 +19,10 @@ En apariencia es igual al realizado en el curso, sin embargo contiene algunas im
 ✨ Consumo de API
 ✨ Manejo de estados
 
-## Probar la app
-
-[https://valessol.github.io/cryptocurrency-quote-app/](https://valessol.github.io/cryptocurrency-quote-app/)
+## Instalación
+```
+git clone https://github.com/valessol/cryptocurrency-quote-app.git
+cd cryptocurrency-quote-app
+npm i
+npm run dev
+```
